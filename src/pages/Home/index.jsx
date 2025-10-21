@@ -14,6 +14,7 @@ function Home() {
 
   async function getUsers() {
     const usersFromApi = await api.get("/user/users");
+    console.log(usersFromApi.data);
     setUsers(usersFromApi.data);
   }
 
@@ -25,6 +26,11 @@ function Home() {
       height: inputHeight.current.value,
       weight: inputWeight.current.value,
     });
+  }
+
+  async function deleteUsers(id) {
+    await api.delete(`/user/delete/${id}`);
+    getUsers();
   }
 
   useEffect(() => {
@@ -44,7 +50,7 @@ function Home() {
           <button onClick={postUsers}>Cadastrar</button>
         </form>
         {users.map((user) => (
-          <div key={user.id} className="card">
+          <div key={user.userId} className="card">
             <div>
               <p>
                 Nome: <span>{user.name}</span>
@@ -66,7 +72,13 @@ function Home() {
               </p>
             </div>
             <div id="trash">
-              <button>
+              <button
+                onClick={() =>
+                  user.userId
+                    ? deleteUsers(user.userId)
+                    : console.error("ID do usuário ausente!")
+                }
+              >
                 <img src={Trash} alt="" />
               </button>
             </div>
