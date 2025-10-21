@@ -1,27 +1,19 @@
 import "./style.css";
 import Trash from "../../assets/icons8-lixeira.svg";
+import api from "../../services/api";
+import { useEffect, useState } from "react";
 
 function Home() {
-  const users = [
-    {
-      id: "1",
-      name: "coala",
-      cpf: "123.456.456-09",
-      age: "23",
-      height: "1.79",
-      weight: "91",
-      imc: "24.0",
-    },
-    {
-      id: "2",
-      name: "silva",
-      cpf: "123.456.456-09",
-      age: "20",
-      height: "1.60",
-      weight: "90",
-      imc: "35.0",
-    },
-  ];
+  const [users, setUsers] = useState([]);
+  async function getUsers() {
+    const usersFromApi = await api.get("/user/users");
+
+    setUsers(usersFromApi.data);
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <>
