@@ -49,41 +49,6 @@ function Home() {
           <input placeholder="Peso" type="peso" ref={inputWeight} />
           <button onClick={postUsers}>Cadastrar</button>
         </form>
-        {users.map((user) => (
-          <div key={user.userId} className="card">
-            <div>
-              <p>
-                Nome: <span>{user.name}</span>
-              </p>
-              <p>
-                CPF: <span>{user.cpf}</span>
-              </p>
-              <p>
-                Idade: <span>{user.age}</span>
-              </p>
-              <p>
-                Altura: <span>{user.height}</span>
-              </p>
-              <p>
-                Peso: <span>{user.weight}</span>
-              </p>
-              <p>
-                IMC: <span>{user.imc}</span>
-              </p>
-            </div>
-            <div id="trash">
-              <button
-                onClick={() =>
-                  user.userId
-                    ? deleteUsers(user.userId)
-                    : console.error("ID do usuário ausente!")
-                }
-              >
-                <img src={Trash} alt="" />
-              </button>
-            </div>
-          </div>
-        ))}
       </div>
     </>
   );
