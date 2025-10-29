@@ -21,28 +21,45 @@ const List = () => {
     getUsers();
   }, []);
 
-  useEffect(() => {
-    if (filter.trim() === "") {
-      getUsers();
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      searchByName(filter);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [filter]);
-
   async function searchByName(name) {
     console.log(`Buscando por NOME: ${name}`);
     try {
       const response = await api.get(`/user/name/${name}`);
       setUsers(response.data);
-    } catch {
+    } catch (error) {
       console.error("Erro ao buscar por nome:", error);
-      setUsers([]);
+      getUsers([]);
     }
   }
+
+  async function searchByCpf(cpf) {
+    console.log(`Buscando por CPF: ${cpf}`);
+    try {
+      const response = await api.get(`/user/cpf/${cpf}`);
+      const data = Array.isArray(response.data)
+        ? response.data
+        : [response.data];
+      setUsers(data);
+    } catch (error) {
+      console.error("Erro ao buscar por cpf:", error);
+      getUsers();
+    }
+  }
+
+  useEffect(() => {
+    if (filter.trim() === "") {
+      getUsers();
+      return;
+    }
+    const timer = setTimeout(() => {
+      if (/^[0-9]+$/.test(filter.trim())) {
+        searchByCpf(filter);
+      } else {
+        searchByName(filter);
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [filter]);
 
   return (
     <>
