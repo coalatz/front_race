@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 import Trash from "../../assets/icons8-lixeira.svg";

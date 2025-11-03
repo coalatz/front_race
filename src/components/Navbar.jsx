@@ -12,7 +12,7 @@ const Navbar = () => {
           <Link to="/">Registrar Usuarios</Link>
         </li>
         <li>
-          <Link to="">Atualizar Usuario</Link>
+          <Link to="/update">Atualizar Usuario</Link>
         </li>
       </ul>
     </nav>
