@@ -1,16 +1,52 @@
-# React + Vite
+# 🏎️ Projeto Race - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o **frontend** do projeto **Race**, uma aplicação web desenvolvida com **React** que consome uma API construída em **Spring Boot**.  
+O objetivo do sistema é gerenciar usuários, oferecendo uma interface intuitiva para **cadastro, listagem, busca e atualização** de informações.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## React Compiler
+- ⚛️ **React** — Biblioteca JavaScript para construção de interfaces de usuário  
+- 🌐 **Axios** — Cliente HTTP para integração com a API  
+- 🧩 **React Router** — Gerenciamento de rotas e navegação entre telas  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧠 Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ Cadastro de usuários  
+- ✅ Listagem geral de usuários  
+- ✅ Busca por nome  
+- ✅ Busca por CPF  
+- ✅ Atualização de usuários  
+- 🔄 Confirmações e pop-ups de ações (em desenvolvimento)  
+
+---
+## ⚙️ Como Executar o Projeto
+ Pré-requisitos:
+- Node.js instalado (versão 18 ou superior)
+- NPM
+### Clone este repositório
+```git clone https://github.com/coalatz/race-frontend.git```
+
+### Acesse a pasta do projeto
+```cd race-frontend```
+
+### Instale as dependências
+```npm install```
+
+
+### Inicie o servidor de desenvolvimento
+```npm run dev```
+
+---
+## 📈 Próximos Passos
+
+- Adicionar confirmações visuais e pop-ups para ações realizadas
+
+- Melhorar a experiência do usuário (UX)
+
+- Implementar validações de formulário
+
+- Criar testes de interface (React Testing Library)
