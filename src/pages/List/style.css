@@ -1,4 +1,14 @@
-input {
-  margin: 30px 35px;
+.search-user input {
+  margin: 30px 40px;
+  width: 300px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30px;
+}
+
+.card {
   width: 300px;
 }
