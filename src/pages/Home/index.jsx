@@ -1,69 +1,54 @@
 import "./style.css";
 import Trash from "../../assets/icons8-lixeira.svg";
+import api from "../../services/api";
+import { useEffect, useRef, useState } from "react";
 
 function Home() {
-  const users = [
-    {
-      id: "1",
-      name: "coala",
-      cpf: "123.456.456-09",
-      age: "23",
-      height: "1.79",
-      weight: "91",
-      imc: "24.0",
-    },
-    {
-      id: "2",
-      name: "silva",
-      cpf: "123.456.456-09",
-      age: "20",
-      height: "1.60",
-      weight: "90",
-      imc: "35.0",
-    },
-  ];
+  const [users, setUsers] = useState([]);
+
+  const inputName = useRef();
+  const inputCpf = useRef();
+  const inputAge = useRef();
+  const inputHeight = useRef();
+  const inputWeight = useRef();
+
+  async function getUsers() {
+    const usersFromApi = await api.get("/user/users");
+    console.log(usersFromApi.data);
+    setUsers(usersFromApi.data);
+  }
+
+  async function postUsers() {
+    await api.post("/user/register", {
+      name: inputName.current.value,
+      cpf: inputCpf.current.value,
+      age: inputAge.current.value,
+      height: inputHeight.current.value,
+      weight: inputWeight.current.value,
+    });
+  }
+
+  async function deleteUsers(id) {
+    await api.delete(`/user/delete/${id}`);
+    getUsers();
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <>
       <div className="container">
         <form action="">
           <h1>Cadastro de Usuarios</h1>
-          <input placeholder="Nome Completo" type="nome" />
-          <input placeholder="CPF" type="cpf" />
-          <input placeholder="Idade" type="idade" />
-          <input placeholder="Altura" type="altura" />
-          <input placeholder="Peso" type="peso" />
-          <button>Cadastrar</button>
+          <input placeholder="Nome Completo" type="nome" ref={inputName} />
+          <input placeholder="CPF" type="cpf" ref={inputCpf} />
+          <input placeholder="Idade" type="idade" ref={inputAge} />
+          <input placeholder="Altura" type="altura" ref={inputHeight} />
+          <input placeholder="Peso" type="peso" ref={inputWeight} />
+          <button onClick={postUsers}>Cadastrar</button>
         </form>
-        {users.map((user) => (
-          <div key={user.id} className="card">
-            <div>
-              <p>
-                Nome: <span>{user.name}</span>
-              </p>
-              <p>
-                CPF: <span>{user.cpf}</span>
-              </p>
-              <p>
-                Idade: <span>{user.age}</span>
-              </p>
-              <p>
-                Altura: <span>{user.height}</span>
-              </p>
-              <p>
-                Peso: <span>{user.weight}</span>
-              </p>
-              <p>
-                IMC: <span>{user.imc}</span>
-              </p>
-            </div>
-            <div id="trash">
-              <button>
-                <img src={Trash} alt="" />
-              </button>
-            </div>
-          </div>
-        ))}
       </div>
     </>
   );

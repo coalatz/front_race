@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+
+  & ul {
+    display: flex;
+    padding: 20px;
+  }
+
+  & li {
+    display: inline;
+    margin: 0 15px;
+  }
+
+  & a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+  }
+}
