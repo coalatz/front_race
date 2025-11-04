@@ -1,3 +1,4 @@
+import "./style.css";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 
@@ -36,16 +37,17 @@ const UpdateUser = () => {
 
   return (
     <>
-      <div key={user.userId} className="card">
-        <div>
-          <input
-            type="text"
-            value={input}
-            placeholder="CPF"
-            onChange={(e) => setInput(e.target.value)}
-          />
-
-          <label>Nome:</label>
+      <input
+        className="input-up"
+        type="text"
+        value={input}
+        placeholder="Pesquisar usurio por CPF"
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <div key={user.userId} className="card-up">
+        <h1>Atualizar Usuario</h1>
+        <div className="elements">
+          <p>Nome</p>
           <input
             type="text"
             value={user.name}
@@ -53,10 +55,10 @@ const UpdateUser = () => {
             name="name"
           />
 
-          <label>CPF:</label>
-          <input type="text" value={user.cpf} />
+          <p>CPF</p>
+          <input type="text" value={user.cpf} readOnly />
 
-          <label>Idade:</label>
+          <p>Idade</p>
           <input
             type="number"
             value={user.age}
@@ -64,24 +66,24 @@ const UpdateUser = () => {
             name="age"
           />
 
-          <label>Altura:</label>
+          <p>Altura</p>
           <input
-            type="text"
+            type="number"
             value={user.height}
             name="height"
             onChange={handleEditChange}
           />
 
-          <label> Peso:</label>
+          <p> Peso</p>
           <input
-            type="text"
+            type="number"
             value={user.weight}
             name="weight"
             onChange={handleEditChange}
           />
 
-          <label> IMC:</label>
-          <input type="text" value={user.imc} />
+          <p>IMC</p>
+          <input type="text" value={user.imc} readOnly />
           <button onClick={updateUser}>Atualizar</button>
         </div>
       </div>

@@ -72,35 +72,38 @@ const List = () => {
           onChange={(e) => setFilter(e.target.value)}
         />
       </div>
-      {users.map((user) => (
-        <div key={user.userId} className="card">
-          <div>
-            <p>
-              Nome: <span>{user.name}</span>
-            </p>
-            <p>
-              CPF: <span>{user.cpf}</span>
-            </p>
-            <p>
-              Idade: <span>{user.age}</span>
-            </p>
-            <p>
-              Altura: <span>{user.height}</span>
-            </p>
-            <p>
-              Peso: <span>{user.weight}</span>
-            </p>
-            <p>
-              IMC: <span>{user.imc}</span>
-            </p>
+      <div className="card-container">
+        {users.map((user) => (
+          <div key={user.userId} className="card">
+            <div>
+              <p>
+                Nome: <span>{user.name}</span>
+              </p>
+              <p>
+                CPF: <span>{user.cpf}</span>
+              </p>
+              <p>
+                Idade: <span>{user.age}</span>
+              </p>
+              <p>
+                Altura: <span>{user.height}</span>
+              </p>
+              <p>
+                Peso: <span>{user.weight}</span>
+              </p>
+              <p>
+                IMC: <span>{user.imc}</span>
+              </p>
+            </div>
+
+            <div className="Trash">
+              <button onClick={() => deleteUsers(user.userId)}>
+                <img src={Trash} alt="" />
+              </button>
+            </div>
           </div>
-          <div className="Trash">
-            <button onClick={() => deleteUsers(user.userId)}>
-              <img src={Trash} alt="" />
-            </button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 };
