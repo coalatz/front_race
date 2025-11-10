@@ -43,3 +43,26 @@
   margin: 30px 40px;
   width: 300px;
 }
+
+.popup-content {
+  border-radius: 30px;
+  background: rgba(199, 199, 199, 0.6);
+  top: -20px;
+  animation: toastIn 0.4s ease;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%) scale(0.81);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popup-text {
+  font: bold;
+  text-align: center;
+}
