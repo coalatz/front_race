@@ -1,10 +1,12 @@
 import "./style.css";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import Popup from "reactjs-popup";
 
 const UpdateUser = () => {
   const [input, setInput] = useState("");
   const [user, setUser] = useState("");
+  const [popup, setPopup] = useState(false);
 
   async function searchUserCpf(input) {
     const userFromApi = await api.get(`/user/cpf/${input}`);
@@ -16,6 +18,10 @@ const UpdateUser = () => {
     const userId = user.userId;
     const userFromApi = await api.patch(`/user/update/${userId}`, user);
     setUser(userFromApi.data);
+    setPopup(true);
+    setTimeout(() => {
+      setPopup(false);
+    }, 1000);
   }
 
   const handleEditChange = (e) => {
@@ -85,6 +91,13 @@ const UpdateUser = () => {
           <p>IMC</p>
           <input type="text" value={user.imc} readOnly />
           <button onClick={updateUser}>Atualizar</button>
+          <Popup
+            open={popup}
+            onClose={() => setPopup(false)}
+            className="popup-box"
+          >
+            <div className="popup-text">Usuario Atualizado</div>
+          </Popup>
         </div>
       </div>
     </>
