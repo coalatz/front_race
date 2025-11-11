@@ -1,3 +1,5 @@
+<img width="1902" height="950" alt="image" src="https://github.com/user-attachments/assets/905baf11-9283-4652-b8d0-091dd291c645" />
+
 # 🏎️ Projeto Race - Frontend
 
 Este repositório contém o **frontend** do projeto **Race**, uma aplicação web desenvolvida com **React** que consome uma API construída em **Spring Boot**.  
